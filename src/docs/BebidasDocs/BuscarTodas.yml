@@ -1,0 +1,54 @@
+paths:
+  /bebidas/:
+    get:
+      tags:
+        - 'Bebida'
+      summary: Encontrar Todas as Bebidas.
+      responses:
+        200:
+          description: Array de Bebidas.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: ID da Bebida.
+                          example: 0
+                        bebidas:
+                          type: string
+                          description: Nome da Bebida.
+                          example: suco de acerola
+                        preço:
+                          type: string
+                          description: Valor da Bebida.
+                          example: '4'
+                    
+        404:
+          description: Não Encontrado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+                    example: "Bebida não encontrada"
+        # 401:
+        #   description: Não Autorizado.
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           error:
+        #             type: array
+        #             items:
+        #               type: string
+        #             example: ['Não Autorizado!']

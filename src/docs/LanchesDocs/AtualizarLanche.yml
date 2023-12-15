@@ -1,0 +1,113 @@
+paths:
+  /lanche/{id}:
+    put:
+      tags:
+        - 'Lanche'
+      summary: Atualizar um Lanche.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID do Lanche.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lanches:
+                  type: string
+                  description: Nome do Lanche.
+                  example: hamburger
+                preço:
+                  type: string
+                  description: Valor do Lanche.
+                  example: "10"
+                descriçao: 
+                    type: string
+                    description: Descriçao do Lanche.
+                    example: pão, carne, milho, batata palha e salada
+      responses:
+        200:
+          description: Lanche Atualizado!.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID do Lanche.
+                    example: 0
+                  bebidas:
+                    type: string
+                    description: Nome do Lanche.
+                    example: hamburger
+                  preço:
+                   type: string
+                   description: Valor do Lanche.
+                   example:  "10"
+                  descriçao: 
+                    type: string
+                    description: Descriçao do Lanche.
+                    example: pão, carne, milho, batata palha e salada
+        400:
+          description: Erro de Validação.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                      [
+                        'ID Não Informado!',
+                        'Os Dados do Lanche Não foram Informados!',
+                        '`O Parametro passado "${error.value}" não condiz com o tipo Necessário!`'
+                      ]
+        404:
+          description: Não Encontrado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+                    example: ['Lanche não Encontrado!']
+        409:
+          description: Erro de Conflito.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                      [
+                        'Lanche já possui os Dados Informados!',
+                        'Este Nome de Lanche Já Existe!'
+                      ]
+        # 401:
+        #   description: Não Autorizado.
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           error:
+        #             type: array
+        #             items:
+        #               type: string
+        #             example: ['Não Autorizado!']

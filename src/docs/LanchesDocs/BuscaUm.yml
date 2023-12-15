@@ -1,0 +1,49 @@
+paths:
+  /lanche/{id}:
+    get:
+      tags:
+        - 'Lanche'
+      summary: Encontrar Lanche pelo código.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID do Lanche.
+      responses:
+        200:
+          description: Lanche.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID do Lanche.
+                    example: 0
+                  Lanches:
+                    type: string
+                    description: Nome do Lanche.
+                    example: hamburger
+                  preço:
+                    type: string
+                    description: Valor do Lanche.
+                    example: "10"
+                  descriçao: 
+                    type: string
+                    description: Descriçao do Lanche.
+                    example: pão, carne, milho, batata palha e salada
+        404:
+          description: Não Encontrado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: array
+                    items:
+                      type: string
+                    example: "Lanche não encontrado"

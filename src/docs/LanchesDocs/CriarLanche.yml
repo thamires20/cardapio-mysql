@@ -1,0 +1,79 @@
+paths:
+  /lanche:
+    post:
+      tags:
+        - 'Lanche'
+      summary: Criar Lanche.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lanches:
+                  type: string
+                  description: Nome do Lanche.
+                  example: hamburger
+                preço:
+                  type: string
+                  description: Valor do Lanche.
+                  example: "10"
+                descriçao: 
+                   type: string
+                   description: Descriçao do Lanche.
+                   example: pão, carne, milho, batata palha e salada
+               
+      responses:
+        201:
+          description: Retorna um Lanche.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID do Lanche.
+                    example: 0
+                  Lanches:
+                    type: string
+                    description: Nome do Lanche.
+                    example: hamburger
+                  preço:
+                    type: string
+                    description: Valor do Lanche.
+                    example: "10"
+                descriçao: 
+                     type: string
+                     description: Descriçao do Lanche.
+                     example: pão, carne, milho, batata palha e salada
+        400:
+          description: Erro de Validação.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                      [
+                        'Lanche Não Informado!',
+                        'Preço Não Informado!',
+                        '`O Parametro passado "${error.value}" não condiz com o tipo Necessário!`'
+                      ]
+        409:
+          description: Erro de Conflito.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+                    example: ['Este Lanche Já Existe!']

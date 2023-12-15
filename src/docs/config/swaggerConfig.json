@@ -1,0 +1,31 @@
+{
+    "swaggerDefinition": {
+      "openapi": "3.0.2",
+      "info": {
+        "title": "Swagger",
+        "description": "This is a sample server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use jwt `token` to test the authorization with.",
+        "termsOfService": "http://",
+        "contact": {
+          "email": "apiteam@swagger.io"
+        },
+        "license": {
+          "name": "Version Name",
+          "url": "http://"
+        },
+        "version": "1.0.0"
+      },
+      "components": {},
+      "security": [],
+      "externalDocs": {
+        "description": "Find out more about",
+        "url": "http://"
+      },
+  
+      "servers": [
+        {
+          "url": "http://localhost:3000"
+        }
+      ]
+    },
+    "apis": ["./src/docs/BebidasDocs/*.yml", "./src/docs/LanchesDocs/*.yml"]
+  }

@@ -1,0 +1,57 @@
+paths:
+  /lanches/:
+    get:
+      tags:
+        - 'Lanche'
+      summary: Encontrar Todos os Lanches.
+      responses:
+        200:
+          description: Array de Lanches.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: ID do Lanche.
+                          example: 0
+                        Lanches:
+                          type: string
+                          description: Nome do Lanche.
+                          example: hamburger
+                        preço:
+                          type: string
+                          description: Valor do Lanche.
+                          example: '10'
+                        descriçao:
+                          type: string
+                          description: Descriçao do Lanche.
+                          example: pão, carne, milho, batata palha e salada
+        404:
+          description: Não Encontrado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+                    example: "Lanche não encontrado"
+        # 401:
+        #   description: Não Autorizado.
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           error:
+        #             type: array
+        #             items:
+        #               type: string
+        #             example: ['Não Autorizado!']

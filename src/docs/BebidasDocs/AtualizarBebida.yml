@@ -1,0 +1,113 @@
+paths:
+  /bebida/{id}:
+    put:
+      tags:
+        - 'Bebida'
+      summary: Atualizar uma Bebida.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID da Bebida.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bebidas:
+                  type: string
+                  description: Nome da Bebida.
+                  example: suco de acerola
+                preço:
+                  type: string
+                  description: Valor da Bebida.
+                  example: '4'
+                quantidade:
+                  type: integer
+                  description: Quantidade da Bebida.
+                  example: 0
+      responses:
+        200:
+          description: Bebida Atualizada!.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID da Bebida.
+                    example: 0
+                  bebidas:
+                    type: string
+                    description: Nome da Bebida.
+                    example: suco de acerola
+                preço:
+                  type: string
+                  description: Valor da Bebida.
+                  example: '4'
+                  quantidade:
+                    type: integer
+                    description: Quantidade da Bebida.
+                    example: 0
+        400:
+          description: Erro de Validação.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                      [
+                        'ID Não Informado!',
+                        'Os Dados da Bebida Não foram Informados!',
+                        '`O Parametro passado "${error.value}" não condiz com o tipo Necessário!`'
+                      ]
+        404:
+          description: Não Encontrado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+                    example: ['Bebida não Encontrada!']
+        409:
+          description: Erro de Conflito.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                      [
+                        'Bebida já possui os Dados Informados!',
+                        'Este Nome de Bebida Já Existe!'
+                      ]
+        # 401:
+        #   description: Não Autorizado.
+        #   content:
+        #     application/json:
+        #       schema:
+        #         type: object
+        #         properties:
+        #           error:
+        #             type: array
+        #             items:
+        #               type: string
+        #             example: ['Não Autorizado!']
